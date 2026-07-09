@@ -109,4 +109,9 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+
+  # Kiro CLI + Kiro IDE: global steering via the AGENTS.md standard.
+  # Both read ~/.kiro/steering/; AGENTS.md files are always included, no frontmatter needed.
+  home.file.".kiro/steering/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }

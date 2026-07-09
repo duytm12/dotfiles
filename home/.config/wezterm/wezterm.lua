@@ -10,6 +10,12 @@ config.macos_window_background_blur = 50
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "RESIZE"
 
+-- make inactive panes fade back so the focused one pops
+config.inactive_pane_hsb = {
+  saturation = 0.7,
+  brightness = 0.5,
+}
+
 local act = wezterm.action
 config.keys = {
   -- split panes
