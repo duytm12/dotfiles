@@ -7,6 +7,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin"; # use x86_64-darwin for Intel CPU
 
+  networking.hostName = "Billy";
   system.primaryUser = user;
   users.users.${user} = {
     home = "/Users/${user}";
@@ -17,7 +18,6 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
-      _HIHideMenuBar = true;  # auto-hide the menu bar
       AppleShowAllExtensions = true;
     };
     dock.autohide = true;
@@ -28,6 +28,7 @@
   nix-homebrew = {
     enable = true;
     inherit user;
+    autoMigrate = true;
   };
   homebrew = {
     enable = true;

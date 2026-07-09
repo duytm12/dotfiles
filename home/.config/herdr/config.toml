@@ -1,14 +1,31 @@
+onboarding = false
 [keys]
 prefix = "ctrl+b"
+
+# --- pane keys mirrored from wezterm (direct chords, no prefix) ---
+split_horizontal    = "ctrl+shift+right"  # new pane to the right
+split_vertical      = "ctrl+shift+down"   # new pane below
+cycle_pane_next     = "ctrl+tab"          # next pane
+cycle_pane_previous = "ctrl+shift+tab"    # previous pane
+close_pane          = "ctrl+shift+w"      # close current pane
+
+# --- still available via prefix (ctrl+b) ---
 focus_pane_left  = "prefix+h"
 focus_pane_down  = "prefix+j"
 focus_pane_up    = "prefix+k"
 focus_pane_right = "prefix+l"
-split_horizontal = "prefix+double_quote"
-split_vertical    = "prefix+percent"
 new_tab   = "prefix+c"
 close_tab = "prefix+ampersand"
 workspace_picker = "prefix+w"
 goto             = "prefix+g"
 copy_mode  = "prefix+y"  # herdr's copy-mode entry key; copy-mode's own internal keys (v/space select, y/Enter copy, q/Esc cancel) aren't configurable
 
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "herdr"
+
+[theme]
+name = "rose-pine"
+auto_switch = false

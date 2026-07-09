@@ -63,10 +63,10 @@ Once Nix is installed (`bootstrap.sh` step 1 handles that), you can check that t
 
 ```sh
 nix flake check --no-build
-nix build .#darwinConfigurations.mac.system --dry-run
+nix build .#darwinConfigurations.Billy.system --dry-run
 ```
 
-If you renamed the host label in "Make it yours", substitute your label for `mac` in these commands.
+If you renamed the host label in "Make it yours", substitute your label for `Billy` in these commands.
 
 ## Daily use
 
@@ -86,7 +86,7 @@ If you clone it, review these before you run `bootstrap.sh`:
 
 - **Username**: run `./bootstrap.sh` (it detects your macOS username and offers to set it) OR change the single `user = "kunchen"` line in `flake.nix`.
   Everything else (`configuration.nix`, `home.nix`, home directory paths) is threaded from that one variable.
-- **Host label** `"mac"`, in three places: `flake.nix` (the `darwinConfigurations."mac"` name), `rebuild.sh:5` (the `#mac` at the end of the flake reference), and `bootstrap.sh`'s first-switch command (also `#mac`).
+- **Host label** `"Billy"`, in three places: `flake.nix` (the `darwinConfigurations."Billy"` name), `rebuild.sh:5` (the `#Billy` at the end of the flake reference), and `bootstrap.sh`'s first-switch command (also `#Billy`).
   All three have to match.
 - **CPU architecture**, `hostPlatform` in `configuration.nix` (see Prerequisites above).
 
