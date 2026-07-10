@@ -13,7 +13,6 @@ ${custom.git_worktree}\
 $git_status\
 $fill\
 $memory_usage\
-$all\
 $time\
 $line_break\
 $character\
