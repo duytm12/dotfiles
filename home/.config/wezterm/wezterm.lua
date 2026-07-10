@@ -18,6 +18,10 @@ config.inactive_pane_hsb = {
 
 local act = wezterm.action
 config.keys = {
+  -- Shift+Enter inserts a newline in CLI prompts instead of submitting.
+  -- Terminals normally send \r for Enter regardless of Shift; this sends \n instead.
+  { key = "Enter", mods = "SHIFT", action = act.SendString("\n") },
+
   -- split panes
   { key = "RightArrow", mods = "CTRL|SHIFT", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } }, -- new pane to the right
   { key = "DownArrow",  mods = "CTRL|SHIFT", action = act.SplitVertical   { domain = "CurrentPaneDomain" } }, -- new pane below

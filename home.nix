@@ -16,6 +16,7 @@ in
     jq        # json on the command line
     lazygit
     neovim
+    zoxide    # cd replacement with learning
     # the font everything renders in
     nerd-fonts.hack
   ];
@@ -28,6 +29,7 @@ in
     syntaxHighlighting.enable = true;  # commands turn green when valid
     initContent = ''
       bindkey '^f' autosuggest-accept
+      eval "$(zoxide init zsh)"
     '';
     shellAliases = {
       ".." = "cd ..";
@@ -47,51 +49,29 @@ in
 
   programs.starship = {
     enable = true;
-    settings = {
-      # blank line before every prompt = visual separation between commands
-      add_newline = true;
-
-      # two-line prompt: info on top, cursor on its own line below
-      format = builtins.concatStringsSep "" [
-        "$directory"
-        "$git_branch"
-        "$git_status"
-        "$cmd_duration"
-        "$line_break"
-        "$character"
-      ];
-
-      directory = {
-        style = "bold cyan";
-        truncation_length = 3;        # keep only last 3 path segments
-        truncate_to_repo = true;      # shorten to repo root when inside a git repo
-        read_only = " ";             # lock icon when dir is read-only
-      };
-
-      git_branch = {
-        symbol = " ";                # branch glyph
-        style = "bold purple";
-        format = "[$symbol$branch]($style) ";
-      };
-
-      git_status = {
-        style = "bold yellow";
-        format = "([$all_status$ahead_behind]($style) )";
-      };
-
-      cmd_duration = {
-        min_time = 500;               # only show if a command took >0.5s
-        style = "dimmed white";
-        format = "[ $duration]($style) ";
-      };
-
-      character = {
-        success_symbol = "[❯](bold green)";
-        error_symbol = "[❯](bold red)";
-        vimcmd_symbol = "[❮](bold green)";
-      };
-    };
   };
+
+  programs.git = {
+    enable = true;
+    # Global default identity = company (applies everywhere).
+    settings.user = {
+      name = "Billy-IDF";
+      email = "minhduy.truong@wnco.com";
+    };
+    # Personal identity = only for repos under ~/github/.
+    includes = [
+      {
+        condition = "gitdir:~/github/";
+        contents.user = {
+          name = "Bi";
+          email = "duytm112@gmail.com";
+        };
+      }
+    ];
+  };
+
+  home.file.".config/starship.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/starship.toml";
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =
