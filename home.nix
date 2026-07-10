@@ -44,6 +44,8 @@ in
       gpull = "git pull";
       c = "clear";
       he = "herdr";
+      ll = "ls -la";
+      la = "ls -a";
     };
   };
 
