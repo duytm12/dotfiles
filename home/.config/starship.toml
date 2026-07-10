@@ -12,12 +12,20 @@ $git_branch\
 ${custom.git_worktree}\
 $git_status\
 $fill\
+$memory_usage\
 $all\
 $time\
 $line_break\
 $character\
 """
 right_format = """"""
+
+
+[memory_usage]
+disabled = true
+threshold = -1
+symbol = ' '
+style = 'bold dimmed green'
 
 [fill]
 symbol = " "
