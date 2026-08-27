@@ -17,11 +17,19 @@ in
     lazygit
     neovim
     zoxide    # cd replacement with learning
+    # node.js toolchain
+    nodejs_22 # node runtime + npm
+    pnpm      # fast, disk-efficient package manager
     # the font everything renders in
     nerd-fonts.hack
   ];
   fonts.fontconfig.enable = true;
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    PNPM_HOME = "${config.home.homeDirectory}/.local/share/pnpm";
+  };
+  # put pnpm global binaries on PATH
+  home.sessionPath = [ "${config.home.homeDirectory}/.local/share/pnpm" ];
 
   programs.zsh = {
     enable = true;
@@ -36,6 +44,7 @@ in
       # shortcuts
       k = "kiro";
       kc = "kiro-cli";
+      kc3 = "kiro-cli --v3";
       g = "git";
       gs = "git status";
       ga = "git add";
@@ -44,6 +53,8 @@ in
       gpull = "git pull";
       c = "clear";
       he = "herdr";
+      dbx = "databricks";
+      tf = "terraform";
       ll = "ls -la";
       la = "ls -a";
     };
@@ -74,6 +85,10 @@ in
 
   home.file.".config/starship.toml".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/starship.toml";
+
+  # Global npm / pnpm settings.
+  home.file.".npmrc".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.npmrc";
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =

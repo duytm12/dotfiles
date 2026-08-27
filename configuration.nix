@@ -35,12 +35,17 @@
     onActivation.cleanup = "zap";  # remove anything not listed here
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
+    taps = [
+      "databricks/tap"
+    ];
     brews = [
       "herdr"
+      "databricks/tap/databricks"
     ];
     casks = [
       "wezterm"
-      "claude-code"
+      # "claude-code"
+      "notion"
     ];
   };
 }
