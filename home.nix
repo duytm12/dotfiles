@@ -14,6 +14,7 @@ in
     fd        # fast find
     fzf       # fuzzy finder
     jq        # json on the command line
+    awscli2   # aws cli v2
     lazygit
     neovim
     zoxide    # cd replacement with learning

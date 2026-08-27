@@ -37,10 +37,12 @@
     onActivation.extraFlags = [ "--force" ];
     taps = [
       "databricks/tap"
+      "hashicorp/tap"
     ];
     brews = [
       "herdr"
       "databricks/tap/databricks"
+      "hashicorp/tap/terraform"
     ];
     casks = [
       "wezterm"
