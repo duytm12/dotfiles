@@ -12,6 +12,7 @@ in
     # cli i use constantly
     ripgrep   # fast search
     fd        # fast find
+    tree      # directory tree view
     fzf       # fuzzy finder
     jq        # json on the command line
     awscli2   # aws cli v2
